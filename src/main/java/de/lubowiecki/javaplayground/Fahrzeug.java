@@ -9,4 +9,11 @@ public class Fahrzeug {
 
     // Baue dafür ein neues Paket
     // Schreibe eine Testklasse mit einer main-Methode dafür
+
+    // Erweiterung:
+    // Entwerfe eine Klasse Person
+    // Ein Objekt der Person kann als Fahrer dem Fahrzeug zugewiesen werden
+    // Die Person soll einen Vor- und Nachnamen, sowie Alter haben.
+    // Ist die Person keine 18 Jahre, darf sie nicht als Fahrer eingesetzt werden
+
 }
