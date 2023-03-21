@@ -27,6 +27,5 @@ public class RobotTest {
         r2.zurueck();
         r2.zurueck();
         System.out.println(r2);
-
     }
 }

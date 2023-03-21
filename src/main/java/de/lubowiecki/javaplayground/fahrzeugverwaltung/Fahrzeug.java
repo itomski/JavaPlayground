@@ -1,8 +1,16 @@
 package de.lubowiecki.javaplayground.fahrzeugverwaltung;
 
+import de.lubowiecki.javaplayground.*; // importiert keine Unterpakete, nur Klassen, die direkt im Paket liegen
+import de.lubowiecki.javaplayground.Rechnung; // Importiert nur eine Klasse
+
+/**
+ * @author Tomasz Lubowiecki
+ * @since 1.0
+ * @version 1.0
+ */
 public class Fahrzeug {
 
-    private String marke;
+    private String /* ... */ marke;
 
     private String typ;
 
@@ -14,12 +22,16 @@ public class Fahrzeug {
 
     private Person fahrer;
 
-    public Fahrzeug(String marke, String typ, String kennzeichen) {
+    public Fahrzeug(String marke, String typ, /* ... */ String kennzeichen) {
         this.marke = marke;
         this.typ = typ;
         this.kennzeichen = kennzeichen;
     }
 
+    /**
+     * Beschleunigt das Fahrzeug um angegebene Anzahl von km
+     * @param kmh
+     */
     public void beschleunigen(int kmh) {
         // TODO: kmh auf Vorzeichen prüfen
         if(motorAn) {

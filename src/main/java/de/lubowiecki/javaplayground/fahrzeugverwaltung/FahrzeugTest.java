@@ -4,6 +4,8 @@ public class FahrzeugTest {
 
     public static void main(String[] args) {
 
+        //String s = "Hallo Welt";
+
         Fahrzeug f1 = new Fahrzeug("Ford", "Ka", "HH:AB 123");
 
         Person p = new Person("Peter", "Parker", 25);
