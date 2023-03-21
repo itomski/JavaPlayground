@@ -10,7 +10,7 @@ public class PrinterTest {
         OutputHelper.print(s); // Aufruf einer statischen Methode
         OutputHelper.print(s);
         OutputHelper.print(s);
-        OutputHelper.print(s);
+        OutputHelper.print(s); // Komment
 
         System.out.println(2 + 4);
         //System.out.println(taschenrechner.add(2, 4));
