@@ -8,11 +8,22 @@ public class OverloadingTest {
     }
 
     private void start() {
+
+        print((byte)15);
+
+        byte b = 22;
+        print(b);
+
         print(10);
         print(10.0);
         print("10");
     }
 
+    private void print(byte val) {
+        System.out.println("byte: " + val);
+    }
+
+    // bei print(10) wird int val = 10 ausgeführt
     private void print(int val) {
         System.out.println("int: " + val);
     }
