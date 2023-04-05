@@ -52,7 +52,7 @@ public class Person implements Serializable, Comparable<Person> {
 
     @Override
     public boolean equals(Object o) {
-        System.out.println("EQUALS");
+        //System.out.println("EQUALS");
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
@@ -61,7 +61,7 @@ public class Person implements Serializable, Comparable<Person> {
 
     @Override
     public int hashCode() {
-        System.out.println("HASHCODE");
+        //System.out.println("HASHCODE");
         return Objects.hash(firstname, lastname, birthDate);
     }
 
