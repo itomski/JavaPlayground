@@ -1,6 +1,6 @@
 module JavaPlayground {
-    requires org.apache.commons.lang3;
     requires java.desktop;
+    requires java.sql;
     opens de.lubowiecki.javaplayground;
     opens de.lubowiecki.javaplayground.lambdas;
 }
