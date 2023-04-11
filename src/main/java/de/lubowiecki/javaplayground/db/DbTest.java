@@ -5,6 +5,12 @@ import java.util.List;
 
 public class DbTest {
 
+    // C R U D
+    // Create (save: insert)
+    // Read (getAll, getById)
+    // Update (save: update)
+    // Delete
+
     public static void main(String[] args) {
 
         /*
@@ -27,22 +33,47 @@ public class DbTest {
         }
         */
 
-        User u = new User();
-        u.setFirstname("Bruce");
-        u.setLastname("Banner");
-        u.setJob("Wissenschaftler");
-
         try {
+            /*
+            // INSERT (CREATE)
+            User u = new User();
+            u.setFirstname("Bruce");
+            u.setLastname("Banner");
+            u.setJob("Wissenschaftler");
             DBUtils.save(u);
             System.out.println("User wurde gespeichert.");
+            System.out.println("User wurde gespeichert.");
+            */
+
+            // DELETE
+            //DBUtils.delete(3);
+            //System.out.println("User wurde gelöscht.");
+
+
+            // READ ONE
+            User u = DBUtils.getById(1);
+            System.out.println(u.getJob() + ", " + u.getId() + ", " + u.getLastname());
+
+            // Objekt geändert
+            u.setLastname("Klausen");
+
+            // Zum Update an die DB geschickt
+            DBUtils.save(u);
+            System.out.println("User wurde geändert.");
+
         }
         catch (SQLException e) {
-            System.out.println("Problem beim Speichern. " + e.getMessage());
+            //System.out.println("Problem beim Speichern. " + e.getMessage());
+            //System.out.println("Problem beim Löschen. " + e.getMessage());
+            //System.out.println("Problem beim Lesen. " + e.getMessage());
+            System.out.println("Problem beim Ändern. " + e.getMessage());
         }
 
+        System.out.println();
 
         try {
-            List<User> users = DBUtils.getAllUsers();
+            // READ ALL
+            List<User> users = DBUtils.getAll();
             for (User user: users) {
                 System.out.println(user.getFirstname() + " " + user.getLastname());
             }

@@ -30,6 +30,16 @@ public class DBUtils {
         }
         */
 
+        if(user.getId() > 0) {
+            update(user);
+        }
+        else {
+            insert(user);
+        }
+    }
+
+    private static void insert(User user) throws SQLException {
+
         // Besser! Keine SQL-Injection mehr möglich
         String sql = "INSERT INTO users (id, firstname, lastname, job) VALUES(null, ?, ?, ?)";
         try(Connection connection = createConnection();
@@ -42,8 +52,22 @@ public class DBUtils {
         }
     }
 
+    private static void update(User user) throws SQLException {
 
-    public static List<User> getAllUsers() throws SQLException {
+        // Besser! Keine SQL-Injection mehr möglich
+        String sql = "UPDATE users SET firstname = ?, lastname = ?, job = ? WHERE id = ?";
+        try(Connection connection = createConnection();
+            PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, user.getFirstname());
+            stmt.setString(2, user.getLastname());
+            stmt.setString(3, user.getJob());
+            stmt.setInt(4, user.getId());
+            stmt.execute();
+        }
+    }
+
+
+    public static List<User> getAll() throws SQLException {
         List<User> users = new ArrayList<>();
 
         try(Connection connection = createConnection();
@@ -54,6 +78,29 @@ public class DBUtils {
             }
         }
         return users;
+    }
+
+    public static User getById(int id) throws SQLException {
+
+        try(Connection connection = createConnection();
+            Statement stmt = connection.createStatement()) {
+            ResultSet results = stmt.executeQuery("SELECT * FROM users WHERE id = " + id);
+            if(results.next()) {
+                return create(results);
+            }
+        }
+        return null;
+    }
+
+    public static void delete(User user) throws SQLException {
+        delete(user.getId());
+    }
+
+    public static void delete(int id) throws SQLException {
+        try(Connection connection = createConnection();
+            Statement stmt = connection.createStatement()) {
+            stmt.executeUpdate("DELETE FROM users WHERE id = " + id);
+        }
     }
 
     // Mapping: Wandelt eine Zeile aus der DB in ein Java-Objekt um
