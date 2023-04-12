@@ -49,6 +49,10 @@ public class DBUtils {
             stmt.setString(2, user.getLastname());
             stmt.setString(3, user.getJob());
             stmt.execute();
+
+            // Wird automatisch ausgeführt:
+            //stmt.close();
+            //connection.close();
         }
     }
 
@@ -62,6 +66,7 @@ public class DBUtils {
             stmt.setString(2, user.getLastname());
             stmt.setString(3, user.getJob());
             stmt.setInt(4, user.getId());
+            // execute kann für DML und DDL verwendet werden
             stmt.execute();
         }
     }
@@ -72,8 +77,14 @@ public class DBUtils {
 
         try(Connection connection = createConnection();
             Statement stmt = connection.createStatement()) {
+            // executeQuery kann nur für Abfragen verwendet werden. Liefert ein ResultSet zurück
             ResultSet results = stmt.executeQuery("SELECT * FROM users");
-            while(results.next()) {
+
+            // ResultSetMetaData liefert Informationen über die Tabelle und ihre Spalten
+            //ResultSetMetaData meta = results.getMetaData();
+
+            // Am anfang steht der Cursor des ResultSets vor dem ersten Datensatz (ersten Zeile)
+            while(results.next()) { // next verschiebt den Cursor auf den nächsten Datensatz
                 users.add(create(results));
             }
         }
@@ -99,6 +110,7 @@ public class DBUtils {
     public static void delete(int id) throws SQLException {
         try(Connection connection = createConnection();
             Statement stmt = connection.createStatement()) {
+            // executeUpdate kann für Alle Aktionen die nichts Zurückliefern genutzt werden
             stmt.executeUpdate("DELETE FROM users WHERE id = " + id);
         }
     }
