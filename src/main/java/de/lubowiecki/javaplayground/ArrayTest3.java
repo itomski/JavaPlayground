@@ -1,5 +1,7 @@
 package de.lubowiecki.javaplayground;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ArrayTest3 {
@@ -22,5 +24,32 @@ public class ArrayTest3 {
             }
             System.out.println();
         }
+
+        long[][] arrLong = new long[3][3];
+
+        /*
+        {
+            {0,1,2},
+            {0,1,2},
+            {0,1,2}
+        }
+        */
+
+        arrLong[0] = new long[3];
+        arrLong[0][0] = 3;
+
+        /*
+        try {
+            System.out.println("...");
+            createException();
+        }
+        catch(IOException e) {
+        }
+        */
+    }
+
+    public static IOException createException() {
+        return new IOException();
+        //throw new IOException(); // Handle or Declare
     }
 }
